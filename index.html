@@ -9,24 +9,28 @@
 
     <h1>Autoplay Videos from Archive</h1>
 
-    <iframe id="video1" src="https://arizona.aviaryplatform.com/r/c824b2z53w?media=159319&t=60&e=120&auto_play=true" width="640" height="360" frameborder="0" allow="autoplay; fullscreen" allowfullscreen></iframe>
+    <iframe id="video1" src="https://arizona.aviaryplatform.com/r/c824b2z53w?media=159319&t=60&e=120&auto_play=true" width="960" height="540" frameborder="0" allow="autoplay; fullscreen" allowfullscreen></iframe>
 
-    <iframe id="video2" src="https://arizona.aviaryplatform.com/r/1g0ht2h438?media=159333&t=60&e=120&auto_play=false" width="640" height="360" frameborder="0" allow="autoplay; fullscreen" allowfullscreen style="display:none;"></iframe>
+    <iframe id="video2" src="https://arizona.aviaryplatform.com/r/1g0ht2h438?media=159333&t=60&e=120&auto_play=true" width="960" height="540" frameborder="0" allow="autoplay; fullscreen" allowfullscreen style="display:none;"></iframe>
 
     <script>
+        // Function to play the next video when the current one ends
         function nextVideo(currentVideoId, nextVideoId) {
             const currentVideo = document.getElementById(currentVideoId);
             const nextVideo = document.getElementById(nextVideoId);
 
+            // Listen for when the current video ends
             currentVideo.addEventListener('ended', function() {
-                currentVideo.style.display = 'none';  // Hide the current video
-                nextVideo.style.display = 'block';    // Show the next video
+                // Hide the current video and show the next one
+                currentVideo.style.display = 'none';
+                nextVideo.style.display = 'block';
 
-                // Ensure autoplay for the next video
+                // Modify the second video's src to enable autoplay
                 nextVideo.src = nextVideo.src.replace('auto_play=false', 'auto_play=true');
             });
         }
 
+        // Trigger the autoplay sequence
         nextVideo('video1', 'video2');
     </script>
 
