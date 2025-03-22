@@ -9,25 +9,24 @@
 
     <h1>Autoplay Videos from Archive</h1>
 
-<iframe id="video1" src="https://arizona.aviaryplatform.com/r/c824b2z53w?media=159319&t=60&e=120&auto_play=true" width="640" height="360" frameborder="0" allow="autoplay; fullscreen" allowfullscreen></iframe>
+    <iframe id="video1" src="https://arizona.aviaryplatform.com/r/c824b2z53w?media=159319&t=60&e=120&auto_play=true" width="640" height="360" frameborder="0" allow="autoplay; fullscreen" allowfullscreen></iframe>
 
-<iframe id="video2" src="https://arizona.aviaryplatform.com/r/1g0ht2h438?media=159333&t=60&e=120&auto_play=false" width="640" height="360" frameborder="0" allow="autoplay; fullscreen" allowfullscreen></iframe>
+    <iframe id="video2" src="https://arizona.aviaryplatform.com/r/1g0ht2h438?media=159333&t=60&e=120&auto_play=false" width="640" height="360" frameborder="0" allow="autoplay; fullscreen" allowfullscreen style="display:none;"></iframe>
 
-<script>
-function nextVideo(currentVideoId, nextVideoId) {
-    const currentVideo = document.getElementById(currentVideoId);
-    const nextVideo = document.getElementById(nextVideoId);
+    <script>
+        function nextVideo(currentVideoId, nextVideoId) {
+            const currentVideo = document.getElementById(currentVideoId);
+            const nextVideo = document.getElementById(nextVideoId);
 
-currentVideo.addEventListener('ended', function() {
-        currentVideo.style.display = 'none';
-        nextVideo.style.display = 'block';
+            currentVideo.addEventListener('ended', function() {
+                currentVideo.style.display = 'none';
+                nextVideo.style.display = 'block';
+                nextVideo.src = nextVideo.src.replace('auto_play=false', 'auto_play=true');
+            });
+        }
 
- nextVideo.src = nextVideo.src.replace('auto_play=false', 'auto_play=true');
-    });
-}
-
-nextVideo('video1', 'video2');
-</script>
+        nextVideo('video1', 'video2');
+    </script>
 
 </body>
 </html>
