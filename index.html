@@ -19,8 +19,10 @@
             const nextVideo = document.getElementById(nextVideoId);
 
             currentVideo.addEventListener('ended', function() {
-                currentVideo.style.display = 'none';
-                nextVideo.style.display = 'block';
+                currentVideo.style.display = 'none';  // Hide the current video
+                nextVideo.style.display = 'block';    // Show the next video
+
+                // Ensure autoplay for the next video
                 nextVideo.src = nextVideo.src.replace('auto_play=false', 'auto_play=true');
             });
         }
